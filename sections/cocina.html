@@ -1,0 +1,93 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cocción de legumbres y cereales</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body class=" bg-light">
+    
+<div class = "jumbotron bg-dark text-white mt-0">
+    <h1>En la Cocina</h1>
+    <button class="btn btn-outline-secondary my-1" id="c">Cocción de legumbres y cereales</button>
+    <button class="btn btn-outline-secondary my-1" id="r">Recetas</button>
+</div>
+    
+    <div class="container" id='cocciones'>
+        <h2>Cocción de legumbres y cereales</h2>
+        <span>        
+            <div id="ll" v-if="legum_active === true">
+                <div>
+                    <p class="alert alert-success my-2  mt-4" role="alert">Consejo: {{ gral_legum }}</p>
+                </div>
+                <select class="selectores form-control my-1" id="legum_selector" v-on:change="mostrar('legum_selector', legumbres)">
+                    <option selected disabled id="default">Seleccione una legumbre</option>
+                    <option  v-for="item in legumbres">{{ item[0] }}</option>
+                </select>
+                                   
+                <button id="cer_butt" @click="change()" v-if="legum_active === true" class="btn btn-dark my-1">Consultar Cereales</button>
+            </div>
+            <div id="cc" v-if="legum_active === false">
+                <div>
+                    <p class="alert alert-warning my-2 mt-4" role="alert">Consejo: {{ gral_cereal }}</p>
+                </div>
+                <select class="selectores form-control  my-1 " id="cereal_selector" v-on:change="mostrar('cereal_selector', cereales)">
+                    <option selected disabled id="default">Seleccione un cereal</option>
+                    <option v-for="item in cereales">{{ item[0] }}</option>
+                </select>
+                
+                <button id="leg_butt" @click="change()" v-if="legum_active === false" class="btn btn-dark my-1">Consultar Legumbres</button>
+            </div>
+        </span>
+
+        <div class="card mt-3"  id="info_card">
+            <div id='img' class="card-img-top"></div>
+            <div class="card-body">
+                <h5 class="card-title" id='nombre'></h5>
+                <div id='remojo' class="text-justify"></div>
+                <div id='proporciones' class="text-justify"></div>
+                <div id='i_coccion' class="text-justify">Instrucciones: </div>
+                <div id='t_coccion' v-if="legum_active === true" class="text-justify">Tiempo de cocción: </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id='recetas'>
+        <h2>Recetas</h2>
+        <select class="selectores form-control my-1" id="recet_selector" v-on:change="desplegar()">
+            <option selected disabled id="default">Seleccione una receta</option>
+            <option  v-for="item in recetas">{{ item[0] }}</option>
+        </select>
+        <div id='info_receta'>
+        <h3 class="mt-5" id="receta_nom"></h3>
+        <div id="receta_foto"></div>
+        <h4>Ingredientes</h4>        
+        <div id="receta_ingred">
+            <ul id="ul">
+                <!-- <li v-for="item in recetas"></li> -->
+            </ul>
+        </div>
+        <h4>Procedimiento</h4>
+        <div id="receta_pasos">
+            <ol id="ol">
+                <!-- <li v-for="item in recetas"></li> -->
+            </ol>
+        </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="script/vue2.js"></script>
+    <script type="text/javascript" src="script/models.js"></script>
+    <script type="text/javascript" src="script/recetas.js"></script>
+    <script type="text/javascript" src="script/script.js"></script>
+    <footer class="container-fluid footer py-1 bg-dark text-light fixed-bottom text-center">            
+            <div>© 2020 Web: <a class = "text-light" href="https://www.linkedin.com/in/regina-molares/" target="_blank">
+            Regina N. Molares
+        </a>
+    </footer>
+</body>
+</html>
