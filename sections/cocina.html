@@ -1,53 +1,103 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cocción de legumbres y cereales</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="styles/style.css">
+    <meta charset=UTF-8>
+    <meta name="viewport" content="width=device-width">
+    <script src="https://kit.fontawesome.com/f2652a0a74.js" crossorigin="anonymous"></script>
+    <title>La Gata que Come - En la Cocina</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel=StyleSheet href="../styles/style.css" TYPE="text/css">
 </head>
 
 <body class=" bg-light">
-    
-<div class = "jumbotron bg-dark text-white mt-0">
-    <h1>En la Cocina</h1>
-    <button class="btn btn-outline-secondary my-1" id="c">Cocción de legumbres y cereales</button>
-    <button class="btn btn-outline-secondary my-1" id="r">Recetas</button>
-</div>
-    
-    <div class="container" id='cocciones'>
+    <header>
+        <div class="container-fluid bg-dark" id="cabezota">
+            <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <img src="../img/icongata.jpg" width="30" height="30" alt="icono gata" loading="lazy"
+                            class="d-inline-block align-top">
+                    </a>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="../index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../sections/acerca.html">Acerca de</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../sections/birrerias.html">Sucursales</a>
+                            </li>
+                            <li class="nav-item  active">
+                                <a class="nav-link  disabled" href="../sections/cocina.html">En la Cocina</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../sections/form.html">Contacto<span
+                                        class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Regístrese</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="titulo mt-1">
+                <h1>La Gata que Come</h1>
+                <h2>En la Cocina: Tips de Cocción y recetas</h2>
+            </div>
+        </div>
+    </header>
+    <div class="container mt-3 text-center" id="cooking_cat">
+        <img src="../img/gata_cocina.jpg" width="320px">
+    </div>
+    <div class="container text-center mt-1" id="buttoniere">
+        <button class="btn btn-outline-dark my-1" id="c">Cocción de legumbres y cereales</button>
+        <button class="btn btn-outline-dark my-1" id="r">Recetas</button>
+    </div>
+
+
+    <div class="container text-center  mb-5" id='cocciones'>
         <h2>Cocción de legumbres y cereales</h2>
-        <span>        
+        <span>
             <div id="ll" v-if="legum_active === true">
                 <div>
                     <p class="alert alert-success my-2  mt-4" role="alert">Consejo: {{ gral_legum }}</p>
                 </div>
-                <select class="selectores form-control my-1" id="legum_selector" v-on:change="mostrar('legum_selector', legumbres)">
+                <select class="selectores form-control my-1" id="legum_selector"
+                    v-on:change="mostrar('legum_selector', legumbres)">
                     <option selected disabled id="default">Seleccione una legumbre</option>
-                    <option  v-for="item in legumbres">{{ item[0] }}</option>
+                    <option v-for="item in legumbres">{{ item[0] }}</option>
                 </select>
-                                   
-                <button id="cer_butt" @click="change()" v-if="legum_active === true" class="btn btn-dark my-1">Consultar Cereales</button>
+
+                <button id="cer_butt" @click="change()" v-if="legum_active === true" class="btn btn-dark my-1">Consultar
+                    Cereales</button>
             </div>
             <div id="cc" v-if="legum_active === false">
                 <div>
                     <p class="alert alert-warning my-2 mt-4" role="alert">Consejo: {{ gral_cereal }}</p>
                 </div>
-                <select class="selectores form-control  my-1 " id="cereal_selector" v-on:change="mostrar('cereal_selector', cereales)">
+                <select class="selectores form-control  my-1 " id="cereal_selector"
+                    v-on:change="mostrar('cereal_selector', cereales)">
                     <option selected disabled id="default">Seleccione un cereal</option>
                     <option v-for="item in cereales">{{ item[0] }}</option>
                 </select>
-                
-                <button id="leg_butt" @click="change()" v-if="legum_active === false" class="btn btn-dark my-1">Consultar Legumbres</button>
+
+                <button id="leg_butt" @click="change()" v-if="legum_active === false"
+                    class="btn btn-dark my-1">Consultar Legumbres</button>
             </div>
         </span>
 
-        <div class="card mt-3"  id="info_card">
+        <div class="card mt-3" id="info_card">
             <div id='img' class="card-img-top"></div>
             <div class="card-body">
-                <h5 class="card-title" id='nombre'></h5>
+                <h5 class="card-title font-weight-bold" id='nombre'></h5>
                 <div id='remojo' class="text-justify"></div>
                 <div id='proporciones' class="text-justify"></div>
                 <div id='i_coccion' class="text-justify">Instrucciones: </div>
@@ -56,38 +106,47 @@
         </div>
     </div>
 
-    <div class="container" id='recetas'>
+    <div class="container mb-5 text-center" id='recetas'>
         <h2>Recetas</h2>
         <select class="selectores form-control my-1" id="recet_selector" v-on:change="desplegar()">
             <option selected disabled id="default">Seleccione una receta</option>
-            <option  v-for="item in recetas">{{ item[0] }}</option>
+            <option v-for="item in recetas">{{ item[0] }}</option>
         </select>
         <div id='info_receta'>
-        <h3 class="mt-5" id="receta_nom"></h3>
-        <div id="receta_foto"></div>
-        <h4>Ingredientes</h4>        
-        <div id="receta_ingred">
-            <ul id="ul">
-                <!-- <li v-for="item in recetas"></li> -->
-            </ul>
-        </div>
-        <h4>Procedimiento</h4>
-        <div id="receta_pasos">
-            <ol id="ol">
-                <!-- <li v-for="item in recetas"></li> -->
-            </ol>
-        </div>
+            <h3 class="mt-5" id="receta_nom"></h3>
+            <div id="receta_foto"></div>
+            <h4 class="text-center">Ingredientes</h4>
+            <div class="text-justify" id="receta_ingred">
+                <ul id="ul">
+                    <!-- <li v-for="item in recetas"></li> -->
+                </ul>
+            </div>
+            <h4>Procedimiento</h4>
+            <div class="text-justify" id="receta_pasos">
+                <ol id="ol">
+                    <!-- <li v-for="item in recetas"></li> -->
+                </ol>
+            </div>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="script/vue2.js"></script>
-    <script type="text/javascript" src="script/models.js"></script>
-    <script type="text/javascript" src="script/recetas.js"></script>
-    <script type="text/javascript" src="script/script.js"></script>
-    <footer class="container-fluid footer py-1 bg-dark text-light fixed-bottom text-center">            
-            <div>© 2020 Web: <a class = "text-light" href="https://www.linkedin.com/in/regina-molares/" target="_blank">
-            Regina N. Molares
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../script/vue2.js"></script>
+    <script type="text/javascript" src="../script/models.js"></script>
+    <script type="text/javascript" src="../script/recetas.js"></script>
+    <script type="text/javascript" src="../script/script.js"></script>
+    <footer class="container-fluid footer py-1 bg-dark text-light fixed-bottom text-center">
+        <a class="text-white" href="mailto:programming.regina@gmail.com?subject=bootstrapLaGata">
+            <i class="fas fa-cat"></i> © 2020 Copyright: Regina N. Molares
         </a>
     </footer>
 </body>
+
 </html>

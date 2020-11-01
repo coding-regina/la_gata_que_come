@@ -1,0 +1,52 @@
+body{
+    text-align: center;
+    margin: auto;
+    padding-top: 1em;
+    padding-bottom: 3em; 
+}
+
+.card-body{
+    padding: 1em;
+}
+.card {
+    margin: auto;
+   /*  width: 271px; */
+}
+
+#remojo, #proporciones, #i_coccion, #t_coccion {
+    font-size: small;
+}
+
+#ingr {
+    text-align: justify;
+}
+#buttoniere{   
+    text-align: center;
+}
+
+#recetas, #cocciones {
+    margin-top: 2em;
+}
+
+#fr {max-width: 75%;}
+
+
+@media (max-width: 400px) { 
+    #c, #r {
+        padding: 1em; 
+        margin-top: 2em;
+        }
+
+   .container, #cocciones, #recetas {
+        min-width: 100%; }
+
+    #fr {
+        min-width: 75%;
+    }
+
+
+    .card {
+        min-width: 50vh;
+    }
+ 
+}
